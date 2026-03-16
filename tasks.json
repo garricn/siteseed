@@ -44,10 +44,10 @@
         },
         {
           "id": "GEN-2",
-          "task": "Entity templates — resolve references (customerId → ID from seeded customer), handle nested entities",
+          "task": "Entity templates — resolve references (customerId → ID from seeded customer), handle nested entities. Plan: tasks/active/gen-2-entity-templates-2026-03-15.md",
           "owner": "--",
           "depends": ["GEN-1", "DSC-2"],
-          "status": "pending",
+          "status": "done",
           "release": "v0.1.0"
         },
         {
