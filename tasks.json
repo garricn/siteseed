@@ -6,7 +6,7 @@
       "tasks": [
         {
           "id": "DSC-1",
-          "task": "OpenAPI 3.x parser — spec URL/file → entity graph with field types, required flags, enums",
+          "task": "OpenAPI 3.x parser — spec URL/file → entity graph with field types, required flags, enums. Plan: tasks/active/dsc-1-openapi-parser-2026-03-15.md",
           "owner": "--",
           "depends": [],
           "status": "pending",
