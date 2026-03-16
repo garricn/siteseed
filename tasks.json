@@ -123,7 +123,7 @@
           "task": "Library API — export discover(), seed() for sitefix programmatic consumption",
           "owner": "--",
           "depends": ["SEED-2"],
-          "status": "pending",
+          "status": "done",
           "release": "v0.1.0"
         }
       ]
