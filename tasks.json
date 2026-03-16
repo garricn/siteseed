@@ -25,7 +25,7 @@
           "task": "UI form discovery — sitecap aria tree → entity graph with label-based type heuristics. Plan: tasks/active/dsc-3-ui-form-discovery-2026-03-15.md",
           "owner": "--",
           "depends": ["DSC-1"],
-          "status": "pending",
+          "status": "done",
           "release": "v0.2.0"
         }
       ]
