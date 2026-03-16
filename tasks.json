@@ -52,10 +52,10 @@
         },
         {
           "id": "GEN-3",
-          "task": "Seed plan YAML — generate/read/write seed plans, editable counts and custom values",
+          "task": "Seed plan YAML — generate/read/write seed plans, editable counts and custom values. Plan: tasks/active/gen-3-seed-plan-yaml-2026-03-15.md",
           "owner": "--",
           "depends": ["GEN-2"],
-          "status": "pending",
+          "status": "done",
           "release": "v0.1.0"
         }
       ]
