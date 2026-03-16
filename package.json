@@ -1,0 +1,29 @@
+{
+  "name": "siteseed",
+  "version": "0.1.0",
+  "description": "siteseed — a project",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
+  "bin": {
+    "siteseed": "./bin/siteseed.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "generate": "node scripts/generate.js",
+    "api": "node bin/api-server.js",
+    "mcp": "node bin/mcp-server.js"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.3"
+  }
+}
