@@ -1,0 +1,51 @@
+[
+  {
+    "name": "create_customer",
+    "description": "Create a new customer",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "email": { "type": "string", "format": "email" },
+        "name": { "type": "string" },
+        "age": { "type": "integer" }
+      },
+      "required": ["id", "email"]
+    }
+  },
+  {
+    "name": "create_order",
+    "description": "Create a new order",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "total": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "shipped", "delivered"] }
+      },
+      "required": ["id", "total"]
+    }
+  },
+  {
+    "name": "get_customer",
+    "description": "Get a customer by ID",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" }
+      },
+      "required": ["id"]
+    }
+  },
+  {
+    "name": "delete_customer",
+    "description": "Delete a customer",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" }
+      },
+      "required": ["id"]
+    }
+  }
+]

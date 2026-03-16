@@ -5,6 +5,8 @@ import { faker } from "@faker-js/faker";
 import { readFile } from "node:fs/promises";
 import { discoverFromOpenAPI } from "../lib/discover/index.js";
 import { discoverFromUI } from "../lib/discover/index.js";
+import { discoverFromTRPC } from "../lib/discover/index.js";
+import { discoverFromGraphQL } from "../lib/discover/index.js";
 import { generatePlan, writePlan } from "../lib/seed/index.js";
 import { executeSeed } from "../lib/seed/index.js";
 
@@ -18,6 +20,8 @@ Commands:
 Options:
   --openapi <url|file>   OpenAPI spec URL or file path
   --tree <file>          Accessibility tree file (UI discovery)
+  --trpc <file>          tools.json file (tRPC discovery)
+  --graphql <url>        GraphQL endpoint URL (introspection discovery)
   --base-url <url>       Override base URL
   --count <n>            Records per entity (default: 5)
   --auth <header>        Authorization header value
@@ -29,6 +33,8 @@ Options:
 Examples:
   siteseed discover --openapi ./spec.json
   siteseed discover --tree accessibility.txt
+  siteseed discover --trpc tools.json
+  siteseed discover --graphql http://localhost:4000/graphql
   siteseed plan --openapi ./spec.json --count 10
   siteseed run plan.yaml --openapi ./spec.json --auth "Bearer token"
   siteseed run --openapi ./spec.json --auto --dry-run`;
@@ -49,7 +55,17 @@ async function handleDiscover(values) {
     process.stdout.write(JSON.stringify(result, null, 2) + "\n");
     return;
   }
-  if (!values.openapi) fatal("--openapi or --tree is required");
+  if (values.trpc) {
+    const result = await discoverFromTRPC(values.trpc);
+    process.stdout.write(JSON.stringify(result, null, 2) + "\n");
+    return;
+  }
+  if (values.graphql) {
+    const result = await discoverFromGraphQL(values.graphql);
+    process.stdout.write(JSON.stringify(result, null, 2) + "\n");
+    return;
+  }
+  if (!values.openapi) fatal("--openapi, --tree, --trpc, or --graphql is required");
   const result = await discoverFromOpenAPI(values.openapi, values["base-url"]);
   process.stdout.write(JSON.stringify(result, null, 2) + "\n");
 }
@@ -101,6 +117,8 @@ try {
     options: {
       openapi: { type: "string" },
       tree: { type: "string" },
+      trpc: { type: "string" },
+      graphql: { type: "string" },
       "base-url": { type: "string" },
       count: { type: "string" },
       auth: { type: "string" },

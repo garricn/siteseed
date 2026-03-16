@@ -96,26 +96,26 @@
       "tasks": [
         {
           "id": "ADV-1",
-          "task": "tRPC support — read tools.json / operations registry → entity graph",
+          "task": "tRPC support — read tools.json / operations registry → entity graph. Plan: tasks/active/adv-1-trpc-support-2026-03-15.md",
           "owner": "--",
           "depends": ["DSC-2"],
-          "status": "backlog",
+          "status": "done",
           "release": "v0.3.0"
         },
         {
           "id": "ADV-2",
-          "task": "GraphQL support — introspection query → entity graph",
+          "task": "GraphQL support — introspection query → entity graph. Plan: tasks/active/adv-2-graphql-support-2026-03-15.md",
           "owner": "--",
           "depends": ["DSC-2"],
-          "status": "backlog",
+          "status": "done",
           "release": "v0.3.0"
         },
         {
           "id": "ADV-3",
-          "task": "Smart seeding — edge cases, personas (solo operator vs full company), report-friendly data",
+          "task": "Smart seeding — edge cases, personas (solo operator vs full company), report-friendly data. Plan: tasks/active/adv-3-smart-seeding-2026-03-15.md",
           "owner": "--",
           "depends": ["SEED-1"],
-          "status": "backlog",
+          "status": "done",
           "release": "v0.4.0"
         },
         {
