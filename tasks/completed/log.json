@@ -1,0 +1,92 @@
+[
+  {
+    "id": "DSC-1",
+    "task": "OpenAPI 3.x parser — spec URL/file → entity graph with field types, required flags, enums",
+    "release": "v0.1.0",
+    "completed": "2026-03-15",
+    "plan": "tasks/completed/dsc-1-openapi-parser-2026-03-15.md"
+  },
+  {
+    "id": "DSC-2",
+    "task": "Entity dependency graph — foreign key detection (xId naming), topological sort, cycle detection",
+    "release": "v0.1.0",
+    "completed": "2026-03-15",
+    "plan": "tasks/completed/dsc-2-entity-dependency-graph-2026-03-15.md"
+  },
+  {
+    "id": "DSC-3",
+    "task": "UI form discovery — sitecap aria tree → entity graph with label-based type heuristics",
+    "release": "v0.2.0",
+    "completed": "2026-03-15",
+    "plan": "tasks/completed/dsc-3-ui-form-discovery-2026-03-15.md"
+  },
+  {
+    "id": "GEN-1",
+    "task": "Field-type-aware data generators — faker mapping for string/email/phone/currency/date/number/boolean/enum/reference",
+    "release": "v0.1.0",
+    "completed": "2026-03-15",
+    "plan": "tasks/completed/gen-1-faker-generators-2026-03-15.md"
+  },
+  {
+    "id": "GEN-2",
+    "task": "Entity templates — resolve references (customerId → ID from seeded customer), handle nested entities",
+    "release": "v0.1.0",
+    "completed": "2026-03-15",
+    "plan": "tasks/completed/gen-2-entity-templates-2026-03-15.md"
+  },
+  {
+    "id": "GEN-3",
+    "task": "Seed plan YAML — generate/read/write seed plans, editable counts and custom values",
+    "release": "v0.1.0",
+    "completed": "2026-03-15",
+    "plan": "tasks/completed/gen-3-seed-plan-yaml-2026-03-15.md"
+  },
+  {
+    "id": "SEED-1",
+    "task": "API seeding — HTTP POST to REST endpoints with auth, ID tracking across entities, error handling",
+    "release": "v0.1.0",
+    "completed": "2026-03-15",
+    "plan": "tasks/completed/seed-1-api-seeding-2026-03-15.md"
+  },
+  {
+    "id": "SEED-2",
+    "task": "CLI — discover, plan, run commands with --openapi, --auth, --count, --dry-run options",
+    "release": "v0.1.0",
+    "completed": "2026-03-15",
+    "plan": "tasks/completed/seed-2-cli-2026-03-15.md"
+  },
+  {
+    "id": "SEED-3",
+    "task": "UI seeding — generate sitetest YAML steps or execute directly via sitetest library API",
+    "release": "v0.2.0",
+    "completed": "2026-03-15",
+    "plan": "tasks/completed/seed-3-ui-seeding-2026-03-15.md"
+  },
+  {
+    "id": "ADV-1",
+    "task": "tRPC support — read tools.json / operations registry → entity graph",
+    "release": "v0.3.0",
+    "completed": "2026-03-15",
+    "plan": "tasks/completed/adv-1-trpc-support-2026-03-15.md"
+  },
+  {
+    "id": "ADV-2",
+    "task": "GraphQL support — introspection query → entity graph",
+    "release": "v0.3.0",
+    "completed": "2026-03-15",
+    "plan": "tasks/completed/adv-2-graphql-support-2026-03-15.md"
+  },
+  {
+    "id": "ADV-3",
+    "task": "Smart seeding — edge cases, personas (solo operator vs full company), report-friendly data",
+    "release": "v0.4.0",
+    "completed": "2026-03-15",
+    "plan": "tasks/completed/adv-3-smart-seeding-2026-03-15.md"
+  },
+  {
+    "id": "ADV-4",
+    "task": "Library API — export discover(), seed() for sitefix programmatic consumption",
+    "release": "v0.1.0",
+    "completed": "2026-03-15"
+  }
+]
