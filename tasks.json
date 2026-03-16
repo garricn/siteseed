@@ -74,7 +74,7 @@
         },
         {
           "id": "SEED-2",
-          "task": "CLI — discover, plan, run commands with --openapi, --auth, --count, --dry-run options",
+          "task": "CLI — discover, plan, run commands with --openapi, --auth, --count, --dry-run options. Plan: tasks/active/seed-2-cli-2026-03-15.md",
           "owner": "--",
           "depends": ["SEED-1"],
           "status": "pending",
