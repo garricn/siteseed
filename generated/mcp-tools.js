@@ -59,6 +59,10 @@ export const tools = [
                         "type": "string",
                         "description": "YAML seed plan content or file path"
                   },
+                  "openapi": {
+                        "description": "URL or file path to OpenAPI 3.x spec (required for entity schema discovery)",
+                        "type": "string"
+                  },
                   "auth": {
                         "description": "Auth header value (e.g., 'Bearer token')",
                         "type": "string"
