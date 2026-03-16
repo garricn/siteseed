@@ -14,7 +14,7 @@
         },
         {
           "id": "DSC-2",
-          "task": "Entity dependency graph — foreign key detection (xId naming), topological sort, cycle detection",
+          "task": "Entity dependency graph — foreign key detection (xId naming), topological sort, cycle detection. Plan: tasks/active/dsc-2-entity-dependency-graph-2026-03-15.md",
           "owner": "--",
           "depends": ["DSC-1"],
           "status": "pending",
