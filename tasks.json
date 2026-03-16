@@ -82,10 +82,10 @@
         },
         {
           "id": "SEED-3",
-          "task": "UI seeding — generate sitetest YAML steps or execute directly via sitetest library API",
+          "task": "UI seeding — generate sitetest YAML steps or execute directly via sitetest library API. Plan: tasks/active/seed-3-ui-seeding-2026-03-15.md",
           "owner": "--",
           "depends": ["SEED-1", "DSC-3"],
-          "status": "pending",
+          "status": "done",
           "release": "v0.2.0"
         }
       ]
