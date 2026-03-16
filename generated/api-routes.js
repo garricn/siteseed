@@ -5,7 +5,10 @@ import * as ops from "../lib/operations.js";
 const VERSION = "0.1.0";
 
 const routes = [
-  { method: "GET", path: "/health", op: ops.healthOp }
+  { method: "GET", path: "/discover", op: ops.discoverOp },
+  { method: "GET", path: "/plan", op: ops.planOp },
+  { method: "POST", path: "/seed", op: ops.seedOp },
+  { method: "GET", path: "/status", op: ops.statusOp }
 ];
 
 async function readBody(req) {

@@ -1,7 +1,81 @@
 [
   {
-    "name": "siteseed_health",
-    "description": "Health check",
+    "name": "siteseed_discover",
+    "description": "Discover entities and relationships from an OpenAPI spec URL. Returns an entity graph with field types, dependencies, and seed order.",
+    "input_schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "openapi": {
+          "type": "string",
+          "description": "URL or file path to OpenAPI 3.x spec (JSON or YAML)"
+        },
+        "baseUrl": {
+          "description": "Override base URL for API calls (inferred from spec if omitted)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "openapi"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "siteseed_plan",
+    "description": "Generate a seed plan from an entity graph. Returns YAML seed plan with entity order, counts, and field generators.",
+    "input_schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "openapi": {
+          "type": "string",
+          "description": "URL or file path to OpenAPI 3.x spec"
+        },
+        "count": {
+          "default": 5,
+          "description": "Default number of entities to seed per type",
+          "type": "number"
+        }
+      },
+      "required": [
+        "openapi",
+        "count"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "siteseed_seed",
+    "description": "Execute a seed plan — create entities via API calls in dependency order. Returns seeded entity counts and any errors.",
+    "input_schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "plan": {
+          "type": "string",
+          "description": "YAML seed plan content or file path"
+        },
+        "auth": {
+          "description": "Auth header value (e.g., 'Bearer token')",
+          "type": "string"
+        },
+        "dryRun": {
+          "default": false,
+          "description": "Preview what would be seeded without executing",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "plan",
+        "dryRun"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "siteseed_status",
+    "description": "Check the result of the last seed run.",
     "input_schema": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
       "type": "object",

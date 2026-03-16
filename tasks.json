@@ -1,3 +1,132 @@
 {
-  "sections": []
+  "sections": [
+    {
+      "name": "Discovery",
+      "prefix": "DSC",
+      "tasks": [
+        {
+          "id": "DSC-1",
+          "task": "OpenAPI 3.x parser — spec URL/file → entity graph with field types, required flags, enums",
+          "owner": "--",
+          "depends": [],
+          "status": "pending",
+          "release": "v0.1.0"
+        },
+        {
+          "id": "DSC-2",
+          "task": "Entity dependency graph — foreign key detection (xId naming), topological sort, cycle detection",
+          "owner": "--",
+          "depends": ["DSC-1"],
+          "status": "pending",
+          "release": "v0.1.0"
+        },
+        {
+          "id": "DSC-3",
+          "task": "UI form discovery — sitecap aria tree → entity graph with label-based type heuristics",
+          "owner": "--",
+          "depends": ["DSC-1"],
+          "status": "pending",
+          "release": "v0.2.0"
+        }
+      ]
+    },
+    {
+      "name": "Generation",
+      "prefix": "GEN",
+      "tasks": [
+        {
+          "id": "GEN-1",
+          "task": "Field-type-aware data generators — faker mapping for string/email/phone/currency/date/number/boolean/enum/reference",
+          "owner": "--",
+          "depends": ["DSC-1"],
+          "status": "pending",
+          "release": "v0.1.0"
+        },
+        {
+          "id": "GEN-2",
+          "task": "Entity templates — resolve references (customerId → ID from seeded customer), handle nested entities",
+          "owner": "--",
+          "depends": ["GEN-1", "DSC-2"],
+          "status": "pending",
+          "release": "v0.1.0"
+        },
+        {
+          "id": "GEN-3",
+          "task": "Seed plan YAML — generate/read/write seed plans, editable counts and custom values",
+          "owner": "--",
+          "depends": ["GEN-2"],
+          "status": "pending",
+          "release": "v0.1.0"
+        }
+      ]
+    },
+    {
+      "name": "Seeding",
+      "prefix": "SEED",
+      "tasks": [
+        {
+          "id": "SEED-1",
+          "task": "API seeding — HTTP POST to REST endpoints with auth, ID tracking across entities, error handling",
+          "owner": "--",
+          "depends": ["GEN-3"],
+          "status": "pending",
+          "release": "v0.1.0"
+        },
+        {
+          "id": "SEED-2",
+          "task": "CLI — discover, plan, run commands with --openapi, --auth, --count, --dry-run options",
+          "owner": "--",
+          "depends": ["SEED-1"],
+          "status": "pending",
+          "release": "v0.1.0"
+        },
+        {
+          "id": "SEED-3",
+          "task": "UI seeding — generate sitetest YAML steps or execute directly via sitetest library API",
+          "owner": "--",
+          "depends": ["SEED-1", "DSC-3"],
+          "status": "pending",
+          "release": "v0.2.0"
+        }
+      ]
+    },
+    {
+      "name": "Advanced",
+      "prefix": "ADV",
+      "tasks": [
+        {
+          "id": "ADV-1",
+          "task": "tRPC support — read tools.json / operations registry → entity graph",
+          "owner": "--",
+          "depends": ["DSC-2"],
+          "status": "backlog",
+          "release": "v0.3.0"
+        },
+        {
+          "id": "ADV-2",
+          "task": "GraphQL support — introspection query → entity graph",
+          "owner": "--",
+          "depends": ["DSC-2"],
+          "status": "backlog",
+          "release": "v0.3.0"
+        },
+        {
+          "id": "ADV-3",
+          "task": "Smart seeding — edge cases, personas (solo operator vs full company), report-friendly data",
+          "owner": "--",
+          "depends": ["SEED-1"],
+          "status": "backlog",
+          "release": "v0.4.0"
+        },
+        {
+          "id": "ADV-4",
+          "task": "Library API — export discover(), seed() for sitefix programmatic consumption",
+          "owner": "--",
+          "depends": ["SEED-2"],
+          "status": "pending",
+          "release": "v0.1.0"
+        }
+      ]
+    }
+  ]
 }

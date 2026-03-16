@@ -10,10 +10,133 @@
     }
   ],
   "paths": {
-    "/health": {
+    "/discover": {
       "get": {
-        "summary": "Health check",
-        "operationId": "health",
+        "summary": "Discover entities and relationships from an OpenAPI spec URL. Returns an entity graph with field types, dependencies, and seed order.",
+        "operationId": "discover",
+        "parameters": [
+          {
+            "name": "openapi",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "URL or file path to OpenAPI 3.x spec (JSON or YAML)"
+            }
+          },
+          {
+            "name": "baseUrl",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Override base URL for API calls (inferred from spec if omitted)",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/plan": {
+      "get": {
+        "summary": "Generate a seed plan from an entity graph. Returns YAML seed plan with entity order, counts, and field generators.",
+        "operationId": "plan",
+        "parameters": [
+          {
+            "name": "openapi",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "URL or file path to OpenAPI 3.x spec"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "default": 5,
+              "description": "Default number of entities to seed per type",
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/seed": {
+      "post": {
+        "summary": "Execute a seed plan — create entities via API calls in dependency order. Returns seeded entity counts and any errors.",
+        "operationId": "seed",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "plan": {
+                    "type": "string",
+                    "description": "YAML seed plan content or file path"
+                  },
+                  "auth": {
+                    "description": "Auth header value (e.g., 'Bearer token')",
+                    "type": "string"
+                  },
+                  "dryRun": {
+                    "default": false,
+                    "description": "Preview what would be seeded without executing",
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "plan",
+                  "dryRun"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "Check the result of the last seed run.",
+        "operationId": "status",
         "parameters": [],
         "responses": {
           "200": {

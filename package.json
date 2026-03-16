@@ -1,11 +1,14 @@
 {
   "name": "siteseed",
   "version": "0.1.0",
-  "description": "siteseed — a project",
+  "description": "Automated data seeding for web apps — discover models from OpenAPI or UI forms, generate realistic data, seed via API or form filling.",
   "type": "module",
   "main": "./lib/index.js",
   "exports": {
-    ".": "./lib/index.js"
+    ".": "./lib/index.js",
+    "./discover": "./lib/discover/index.js",
+    "./generate": "./lib/generate/index.js",
+    "./seed": "./lib/seed/index.js"
   },
   "bin": {
     "siteseed": "./bin/siteseed.js"
@@ -16,11 +19,17 @@
     "api": "node bin/api-server.js",
     "mcp": "node bin/mcp-server.js"
   },
-  "keywords": [],
+  "keywords": ["seeding", "testing", "openapi", "faker", "data-generation"],
   "license": "MIT",
   "dependencies": {
+    "@faker-js/faker": "^9.0.0",
     "@modelcontextprotocol/sdk": "^1.27.1",
+    "js-yaml": "^4.1.0",
     "zod": "^4.3.6"
+  },
+  "optionalDependencies": {
+    "sitecap": "file:../sitecap",
+    "sitetest": "file:../sitetest"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
