@@ -1,0 +1,50 @@
+{
+  "data": {
+    "__schema": {
+      "types": [
+        {
+          "name": "Customer",
+          "kind": "OBJECT",
+          "fields": [
+            { "name": "id", "type": { "kind": "NON_NULL", "name": null, "ofType": { "kind": "SCALAR", "name": "ID", "ofType": null } } },
+            { "name": "email", "type": { "kind": "NON_NULL", "name": null, "ofType": { "kind": "SCALAR", "name": "String", "ofType": null } } },
+            { "name": "name", "type": { "kind": "SCALAR", "name": "String", "ofType": null } },
+            { "name": "age", "type": { "kind": "SCALAR", "name": "Int", "ofType": null } },
+            { "name": "rating", "type": { "kind": "SCALAR", "name": "Float", "ofType": null } },
+            { "name": "active", "type": { "kind": "SCALAR", "name": "Boolean", "ofType": null } },
+            { "name": "orders", "type": { "kind": "LIST", "name": null, "ofType": { "kind": "OBJECT", "name": "Order", "ofType": null } } }
+          ]
+        },
+        {
+          "name": "Order",
+          "kind": "OBJECT",
+          "fields": [
+            { "name": "id", "type": { "kind": "NON_NULL", "name": null, "ofType": { "kind": "SCALAR", "name": "ID", "ofType": null } } },
+            { "name": "total", "type": { "kind": "NON_NULL", "name": null, "ofType": { "kind": "SCALAR", "name": "Float", "ofType": null } } },
+            { "name": "customer", "type": { "kind": "OBJECT", "name": "Customer", "ofType": null } },
+            { "name": "status", "type": { "kind": "ENUM", "name": "OrderStatus", "ofType": null } }
+          ]
+        },
+        {
+          "name": "Query",
+          "kind": "OBJECT",
+          "fields": [
+            { "name": "customers", "type": { "kind": "LIST", "name": null, "ofType": { "kind": "OBJECT", "name": "Customer", "ofType": null } } }
+          ]
+        },
+        {
+          "name": "__Type",
+          "kind": "OBJECT",
+          "fields": [
+            { "name": "name", "type": { "kind": "SCALAR", "name": "String", "ofType": null } }
+          ]
+        },
+        {
+          "name": "OrderStatus",
+          "kind": "ENUM",
+          "fields": null
+        }
+      ]
+    }
+  }
+}
