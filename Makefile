@@ -13,7 +13,7 @@ lint: ## Lint code with eslint
 test: ## Run tests
 	node --test test/*.test.js
 
-check: lint test ## Run all checks (lint, test)
+check: generate lint test ## Run all checks (lint, test)
 
 generate: ## Regenerate API surfaces from operations
 	node scripts/generate.js
