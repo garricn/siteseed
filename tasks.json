@@ -39,7 +39,7 @@
           "task": "Field-type-aware data generators — faker mapping for string/email/phone/currency/date/number/boolean/enum/reference. Plan: tasks/active/gen-1-faker-generators-2026-03-15.md",
           "owner": "--",
           "depends": ["DSC-1"],
-          "status": "pending",
+          "status": "done",
           "release": "v0.1.0"
         },
         {
