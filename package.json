@@ -19,8 +19,20 @@
     "api": "node bin/api-server.js",
     "mcp": "node bin/mcp-server.js"
   },
+  "files": ["lib/", "bin/", "generated/"],
   "keywords": ["seeding", "testing", "openapi", "faker", "data-generation"],
   "license": "MIT",
+  "author": "Garric Nahapetian",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/garricn/siteseed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/garricn/siteseed/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
   "dependencies": {
     "@faker-js/faker": "^9.0.0",
     "@modelcontextprotocol/sdk": "^1.27.1",
