@@ -9,3 +9,7 @@ repos:
         args: ["--maxkb=1000"]
       - id: check-json
       - id: check-merge-conflict
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.22.1
+    hooks:
+      - id: gitleaks

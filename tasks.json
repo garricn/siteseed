@@ -19,6 +19,20 @@
       "name": "Advanced",
       "prefix": "ADV",
       "tasks": []
+    },
+    {
+      "name": "Open-Source Readiness",
+      "prefix": "OSS",
+      "tasks": [
+        {
+          "id": "OSS-1",
+          "task": "Prepare siteseed for open-source release — LICENSE, README, packaging, PII scrub, CI, engineering standards. Plan: tasks/active/oss-1-open-source-readiness-2026-03-17.md",
+          "owner": "--",
+          "depends": [],
+          "status": "done",
+          "release": "--"
+        }
+      ]
     }
   ]
 }
