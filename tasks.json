@@ -13,7 +13,16 @@
     {
       "name": "Seeding",
       "prefix": "SEED",
-      "tasks": []
+      "tasks": [
+        {
+          "id": "SEED-1",
+          "task": "tRPC seeding support — teach `run` to call tRPC mutations (not just REST). Fix discovery: tool name suffix patterns (xxx_create), schema key (inputSchema), nested array fields. Unblocks InfiniteOS FB-12. Plan: tasks/active/seed-1-trpc-seeding-2026-03-17.md",
+          "owner": "--",
+          "depends": [],
+          "status": "pending",
+          "release": "--"
+        }
+      ]
     },
     {
       "name": "Advanced",
