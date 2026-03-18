@@ -65,6 +65,19 @@
     }
   },
   {
+    "name": "infos_widgets_create",
+    "trpcPath": "widgets.create",
+    "description": "Create a widget (has trpcPath field)",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "name": { "type": "string" }
+      },
+      "required": ["id"]
+    }
+  },
+  {
     "name": "get_customer",
     "description": "Get a customer by ID",
     "input_schema": {
