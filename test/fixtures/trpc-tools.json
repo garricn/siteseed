@@ -27,6 +27,32 @@
     }
   },
   {
+    "name": "product_create",
+    "description": "Create a new product (suffix pattern, camelCase schema key)",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "sku": { "type": "string" },
+        "price": { "type": "number" }
+      },
+      "required": ["id", "sku"]
+    }
+  },
+  {
+    "name": "tag_add",
+    "description": "Add a tag (suffix pattern, array field)",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "label": { "type": "string" },
+        "aliases": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["id", "label"]
+    }
+  },
+  {
     "name": "get_customer",
     "description": "Get a customer by ID",
     "input_schema": {

@@ -42,9 +42,44 @@ describe("discoverFromTRPC", () => {
 
   it("multiple create tools → multiple entities", async () => {
     const result = await discoverFromTRPC(FIXTURE);
-    assert.equal(result.entities.length, 2);
+    assert.equal(result.entities.length, 4);
     assert.ok(result.entities.find((e) => e.name === "Customer"));
     assert.ok(result.entities.find((e) => e.name === "Order"));
+    assert.ok(result.entities.find((e) => e.name === "Product"));
+    assert.ok(result.entities.find((e) => e.name === "Tag"));
+  });
+
+  it("suffix pattern xxx_create extracts entity name", async () => {
+    const result = await discoverFromTRPC(FIXTURE);
+    assert.ok(result.entities.find((e) => e.name === "Product"));
+  });
+
+  it("suffix pattern xxx_add extracts entity name", async () => {
+    const result = await discoverFromTRPC(FIXTURE);
+    assert.ok(result.entities.find((e) => e.name === "Tag"));
+  });
+
+  it("inputSchema (camelCase) fallback", async () => {
+    const result = await discoverFromTRPC(FIXTURE);
+    const product = result.entities.find((e) => e.name === "Product");
+    assert.ok(product, "Product entity from camelCase inputSchema");
+    assert.ok(product.fields.find((f) => f.name === "sku"));
+  });
+
+  it("array field mapped with type array", async () => {
+    const result = await discoverFromTRPC(FIXTURE);
+    const tag = result.entities.find((e) => e.name === "Tag");
+    const aliases = tag.fields.find((f) => f.name === "aliases");
+    assert.equal(aliases.type, "array");
+    assert.deepEqual(aliases.items, { type: "string" });
+  });
+
+  it("toolName stored on entity", async () => {
+    const result = await discoverFromTRPC(FIXTURE);
+    const customer = result.entities.find((e) => e.name === "Customer");
+    assert.equal(customer.toolName, "create_customer");
+    const product = result.entities.find((e) => e.name === "Product");
+    assert.equal(product.toolName, "product_create");
   });
 
   it("maps integer to number with integer format", async () => {

@@ -83,12 +83,18 @@ async function handlePlan(values) {
 }
 
 async function handleRun(values, positionals) {
-  if (!values.openapi) fatal("--openapi is required");
+  if (!values.openapi && !values.trpc) fatal("--openapi or --trpc is required");
+  if (values.openapi && values.trpc) fatal("specify either --openapi or --trpc, not both");
 
   let planSource;
   if (values.auto) {
     const count = values.count ? Number(values.count) : 5;
-    const discovery = await discoverFromOpenAPI(values.openapi);
+    let discovery;
+    if (values.trpc) {
+      discovery = await discoverFromTRPC(values.trpc);
+    } else {
+      discovery = await discoverFromOpenAPI(values.openapi);
+    }
     const plan = generatePlan(discovery.entities, { baseUrl: discovery.baseUrl, count });
     planSource = await writePlan(plan);
   } else {
@@ -99,6 +105,7 @@ async function handleRun(values, positionals) {
 
   const result = await executeSeed(planSource, {
     openapi: values.openapi,
+    trpc: values.trpc,
     auth: values.auth,
     dryRun: values["dry-run"] || false,
     faker,
