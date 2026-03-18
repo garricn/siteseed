@@ -42,7 +42,7 @@ describe("discoverFromTRPC", () => {
 
   it("multiple create tools → multiple entities", async () => {
     const result = await discoverFromTRPC(FIXTURE);
-    assert.equal(result.entities.length, 4);
+    assert.equal(result.entities.length, 5);
     assert.ok(result.entities.find((e) => e.name === "Customer"));
     assert.ok(result.entities.find((e) => e.name === "Order"));
     assert.ok(result.entities.find((e) => e.name === "Product"));
@@ -72,6 +72,14 @@ describe("discoverFromTRPC", () => {
     const aliases = tag.fields.find((f) => f.name === "aliases");
     assert.equal(aliases.type, "array");
     assert.deepEqual(aliases.items, { type: "string" });
+  });
+
+  it("namespaced suffix pattern strips prefix — infos_customers_create → Customers not InfosCustomers", async () => {
+    const result = await discoverFromTRPC(FIXTURE);
+    const entity = result.entities.find((e) => e.toolName === "infos_customers_create");
+    assert.ok(entity, "entity from infos_customers_create should exist");
+    assert.equal(entity.name, "Customers");
+    assert.notEqual(entity.name, "InfosCustomers");
   });
 
   it("toolName stored on entity", async () => {

@@ -53,6 +53,18 @@
     }
   },
   {
+    "name": "infos_customers_create",
+    "description": "Create a customer (namespaced — should yield Customer, not InfosCustomers)",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "name": { "type": "string" }
+      },
+      "required": ["id"]
+    }
+  },
+  {
     "name": "get_customer",
     "description": "Get a customer by ID",
     "input_schema": {
