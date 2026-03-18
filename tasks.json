@@ -21,6 +21,14 @@
           "depends": [],
           "status": "done",
           "release": "--"
+        },
+        {
+          "id": "SEED-2",
+          "task": "trpcPath support — prefer tool.trpcPath over toolName for tRPC mutation URLs. Store trpcPath on entity during discovery. Unblocks InfiniteOS FB-12 Phase 0. Plan: tasks/active/seed-2-trpc-path-2026-03-17.md",
+          "owner": "--",
+          "depends": ["SEED-1"],
+          "status": "pending",
+          "release": "--"
         }
       ]
     },
