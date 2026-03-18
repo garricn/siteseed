@@ -86,4 +86,20 @@ describe("seedViaTRPC", () => {
     await seedViaTRPC(makePlan(), [entityNoToolName], { faker, fetch: fn });
     assert.ok(calls[0].url.includes("/trpc/customer"));
   });
+
+  it("prefers trpcPath over toolName in URL", async () => {
+    const { fn, calls } = mockFetch(201);
+    faker.seed(8);
+    const entityWithPath = { ...customerEntity, trpcPath: "customers.create" };
+    await seedViaTRPC(makePlan(), [entityWithPath], { faker, fetch: fn });
+    assert.ok(calls[0].url.includes("/trpc/customers.create"), "trpcPath should be used");
+    assert.ok(!calls[0].url.includes("create_customer"), "toolName should NOT be used when trpcPath present");
+  });
+
+  it("falls back to toolName when trpcPath absent", async () => {
+    const { fn, calls } = mockFetch(201);
+    faker.seed(9);
+    await seedViaTRPC(makePlan(), [customerEntity], { faker, fetch: fn });
+    assert.ok(calls[0].url.includes("/trpc/create_customer"));
+  });
 });

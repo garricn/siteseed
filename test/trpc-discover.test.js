@@ -42,7 +42,7 @@ describe("discoverFromTRPC", () => {
 
   it("multiple create tools → multiple entities", async () => {
     const result = await discoverFromTRPC(FIXTURE);
-    assert.equal(result.entities.length, 5);
+    assert.equal(result.entities.length, 6);
     assert.ok(result.entities.find((e) => e.name === "Customer"));
     assert.ok(result.entities.find((e) => e.name === "Order"));
     assert.ok(result.entities.find((e) => e.name === "Product"));
@@ -80,6 +80,18 @@ describe("discoverFromTRPC", () => {
     assert.ok(entity, "entity from infos_customers_create should exist");
     assert.equal(entity.name, "Customers");
     assert.notEqual(entity.name, "InfosCustomers");
+  });
+
+  it("trpcPath stored on entity when present", async () => {
+    const result = await discoverFromTRPC(FIXTURE);
+    const widget = result.entities.find((e) => e.toolName === "infos_widgets_create");
+    assert.equal(widget.trpcPath, "widgets.create");
+  });
+
+  it("trpcPath absent when tool has no trpcPath", async () => {
+    const result = await discoverFromTRPC(FIXTURE);
+    const customer = result.entities.find((e) => e.name === "Customer");
+    assert.equal(customer.trpcPath, undefined);
   });
 
   it("toolName stored on entity", async () => {
